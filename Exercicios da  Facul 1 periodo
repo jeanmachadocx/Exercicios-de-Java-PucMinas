@@ -1,0 +1,60 @@
+
+/*Exercicio 1*/
+import java.util.*;
+
+public class Exercicios {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int aulasemestre, faltasemestre, notasemestre, notaprova, notafinalsemrec, notafinalcomrec, notaexame,
+                disciplina;
+        System.out.println("Informe o código da disciplina: [ ATP - 01, Diw-02,Tiaw-03]");
+        disciplina = sc.nextInt();
+        switch (disciplina) {
+            case 01:
+                System.out.println("ATP");
+                break;
+            case 02:
+                System.out.println("Diw");
+                break;
+            case 03:
+                System.out.println("Tiaw");
+                break;
+        }
+        System.out.println("Digite o número total de aulas no semestre:");
+        aulasemestre = sc.nextInt();
+        System.out.println("Digite o número de faltas:");
+        faltasemestre = sc.nextInt();
+        if (faltasemestre < 25 / 100 * aulasemestre) {
+            System.out.println("Aluno reprovado por falta");
+        } else if (faltasemestre > 25 / 100 * aulasemestre) {
+            System.out.println("Aluno frequente");
+        }
+        System.out.println("Digite a nota do aluno sem a prova final:");
+        notasemestre = sc.nextInt();
+        if (notasemestre >= 30) {
+            System.out.println("Aluno apto para prosseguir para a prova final ");
+        }
+        System.out.println("Digite o resultado da prova final");
+        notaprova = sc.nextInt();
+        if (notaprova + notasemestre >= 60) {
+            System.out.println("Aluno aprovado com louvor na disciplina" + disciplina);
+            notafinalsemrec = notaprova + notasemestre;
+            System.out.println("Nota final:" + notafinalsemrec);
+        }
+        if (notaprova + notasemestre < 60) {
+            System.out.println("Aluno  em recuperação");
+            System.out.println("Informe o resultado da recuperação: 0 a 30");
+            notaexame = sc.nextInt();
+            if (notaexame + notasemestre < 60) {
+                System.out.println("Aluno terá que repetir a matéria" + disciplina);
+                notafinalcomrec = notaexame + notasemestre;
+                System.out.println("Nota final com recuperação:" + notafinalcomrec);
+            } else if (notaexame + notasemestre >= 60) {
+                System.out.println("Aluno aprovado na recuperação na matéria:" + disciplina);
+                notafinalcomrec = notaexame + notasemestre;
+                System.out.println("Nota final" + notafinalcomrec);
+            }
+            sc.close();
+        }
+    }
+}
